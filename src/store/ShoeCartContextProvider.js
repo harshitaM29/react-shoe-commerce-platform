@@ -9,11 +9,30 @@ const ShoeCartContextProvider = props => {
         })
       
     }
+    const addProductCartHandler = (product) => {
+        const index = cartItems.findIndex(ct => ct.id === product.id);
+        if(index === -1) {
+            const updateCart = cartItems.push({
+                ...product,
+              });
+              setCartItems(updateCart)
+            }
+              else{
+                cartItems[index].large -= 1;
+                cartItems[index].quantity +=1;
+                setCartItems([...cartItems]);
+              }
+              
+       
+            // setCartItems(updateCart);
+        setCartItems([...cartItems])
+        console.log(cartItems)
+    }
     const cartContext = {
         products: cartItems,
         totalAmount: 0,
         addProduct: addProductHandler,
-        addProductCart:(product) => {},
+        addProductCart:addProductCartHandler,
         removeProductCart:(id) => {}
     }
     return (

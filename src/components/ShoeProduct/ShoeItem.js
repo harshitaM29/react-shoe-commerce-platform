@@ -1,4 +1,5 @@
 import classes from './ShoeItem.module.css';
+import AddButton from './AddButton';
 
 const ShoeItem = (props) => {
 //    const price = `$${props.price.toFixed(2)}`;
@@ -12,9 +13,9 @@ console.log(props);
                 <div className={classes.description}>{props.des}</div>
                 <div className={classes.price}>{props.price}</div>
             </div>
-            {/* <div>
-               <MealForm id={props.id} items={props} /> 
-            </div> */}
+            <div>
+               <AddButton products={props} /> 
+            </div>
         </li>
     )
 }
